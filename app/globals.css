@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  color: rgb(36, 36, 36);
+  position: absolute;
+  background-color: #fdfdfd;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content div {
+  display: block;
+  padding: 8px 16px;
+}
+
+.dropdown-content div:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
