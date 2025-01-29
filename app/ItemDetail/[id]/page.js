@@ -1,7 +1,8 @@
+import Loader from "@/app/componnents/common/loader";
 import { db } from "../../../firebase/firebaseconfig";
 import { doc, getDoc } from "firebase/firestore";
-import Detail from "./Detail"; // Importa Detail como Client Component
-
+import { Suspense } from "react";
+import Detail from "./Detail";
 
 export default async function ItemDetailPage({ params }) {
     if(!params) return <h2>Cargando...</h2>;
@@ -16,7 +17,9 @@ export default async function ItemDetailPage({ params }) {
 
     return (
       <>
+      <Suspense fallback={<Loader />}>
         <Detail productDetail={product} />
+        </Suspense>
       </>
     )
   } catch (error) {

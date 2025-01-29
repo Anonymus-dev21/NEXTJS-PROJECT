@@ -3,6 +3,7 @@ import { poppins, urbanist } from "./fonts/fonts";
 import "./globals.css";
 import { Navbar } from "./Componnents/Layouts/navbar/navbar";
 import Footer from "./Componnents/Layouts/Footer";
+import { CartProvider } from "./Context/CartContex";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +28,13 @@ export default function RootLayout({ children }) {
         
         
         dark:bg-slate-900 antialiased`}
+
       >
+        <CartProvider>
         <Navbar />
         {children}
         <Footer />
+        </CartProvider>
       </body>
     </html>
   );

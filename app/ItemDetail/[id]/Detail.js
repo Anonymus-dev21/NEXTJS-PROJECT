@@ -3,10 +3,41 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { CounterContainer } from "@/app/componnents/common/Counter/counterContainer";
+import { CartContext } from "@/app/Context/CartContex";
+import { useContext } from "react";
+
 
  const Detail = ({ productDetail}) => {
-    
+  const {cart, setCart, stockMax, setStockMax} = useContext(CartContext);
+  const [cantidad, setCantidad] = useState(1);
+  useEffect(() => {
+    setStockMax(false)
+  }, [productDetail, setStockMax])
+    const onAdd = (quantity) => {
+      const product = { ...productDetail, cantidad: quantity };
+      const productExist = cart.some((item) => item.id === product.id);
+      if(productExist){
+        const carritoActualizado = cart.map((item) => {
+          if(item.id === product.id){
+            if(item.stock <= item.cantidad + quantity){
+              setStockMax(true)
+              return {...item, cantidad: item.stock}
 
+            } else {
+              setStockMax(false)
+              return {...item, cantidad: item.cantidad + quantity}
+            }
+          }else{
+            return item
+          }
+        })
+        setCart(carritoActualizado)
+      } else{
+        setCart([...cart, product])
+      }
+    };
+    console.log(cart)
 
     return (
         <>
@@ -35,10 +66,15 @@ import Link from "next/link";
             <p className="text-xl font-[Urbanist] font-medium tracking-wide  mt-5 text-pretty">
               {productDetail.descripcionLarga}
             </p>
-<div
-              className="py-[6px] px-2  w-fit rounded-md bg-brown-900 text-[16px] text-white font-semibold font-[Poppins] tracking-wide hover:tracking-wider hover:underline transition-all duration-300 cursor-pointer"
-              
-            >
+            <div className="my-5"><CounterContainer cantidad={cantidad} setCantidad={setCantidad} productDetail={productDetail}/></div>
+            {stockMax && (
+              <div className="text-red-600 py-2">
+                <p className="font-[Poppins] font-bold text-sm">
+                  *Ya tienes el stock máximo agregado en el carrito*
+                </p>
+              </div>
+            )}
+          <div className="py-[6px] px-2 my-5 w-fit rounded-md bg-brown-900 text-[16px] text-white font-semibold font-[Poppins] tracking-wide hover:tracking-wider hover:underline transition-all duration-300 cursor-pointer" onClick={() => onAdd(cantidad)}>
               <span>Agregar al carrito</span>
             </div>
           </div>

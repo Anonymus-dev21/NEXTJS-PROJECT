@@ -1,7 +1,6 @@
-"use client"
-import { useRouter } from "next/navigation";
-const notFoundPage = () => {
-    const router = useRouter();
+import Link from "next/link";
+export default function NotFoundPage()  {
+    
       return (
         <div className="404_CONTAINER flex items-center justify-center max-sm:flex-col w-full min-h-dvh">
           <div className="w-[50%] max-sm:w-[90%] h-[400px]">
@@ -19,15 +18,17 @@ const notFoundPage = () => {
             <p className="font-[Urbanist] font-medium text-gray-900 dark:text-white tracking-wide text-[23px] ">
               Parece que esta pagina ha dejado de existir! Lo sentimos mucho!
             </p>
-            <button onClick={() => { router.back()}}>
+            <Link href="/">
+            
               <div className="py-[6px] px-2 my-5  w-fit rounded-md bg-brown-900 text-[16px] text-white font-semibold font-[Poppins] tracking-wide hover:tracking-wider hover:underline transition-all duration-300 cursor-pointer">
                 <span className="">Volver al Inicio</span>
               </div>
-            </button>
+            
+            </Link>
           </div>
         </div>
       );
     };
     
   
-  export default notFoundPage;
+  

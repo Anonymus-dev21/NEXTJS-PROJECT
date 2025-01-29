@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Theme } from "../../common/theme";
 import { NavbarResponsive } from "./navbarResponsive";
 import { useState, useRef, useEffect } from "react";
+import { CartWidget } from "../../common/CartWidget";
 
 export const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -51,7 +52,12 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center justify-between">
-          <div className="max-xxsm:hidden">
+          <Link href="/Cart">
+            <div className="max-xxsm:mx-3">
+              <CartWidget />
+            </div>
+          </Link>
+          <div className="max-xxsm:hidden ">
             <Theme />
           </div>
           <NavbarResponsive />

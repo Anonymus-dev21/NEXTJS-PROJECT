@@ -4,6 +4,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Theme } from "../../common/theme";
+import { CartWidget } from "../../common/CartWidget";
 
 export const NavbarResponsive = () => {
   const [hamburgerOpen, setHamburger] = useState(false);
@@ -15,7 +16,7 @@ export const NavbarResponsive = () => {
   return (
     <>
       <div className="toggleNavbar" onClick={toggleNav}>
-        <RiMenu3Fill className="sm:hidden text-[50px] text-white font-bold p-2 rounded-full bg-black max-800:flex" />
+        <RiMenu3Fill className="sm:hidden text-[40px] text-white font-bold p-2 rounded-full bg-black max-800:flex" />
       </div>
 
       <div
@@ -24,6 +25,7 @@ export const NavbarResponsive = () => {
         }`}
         onClick={toggleNav}
       ></div>
+
       <div
         className={`fixed top-0 w-[300px] max-sm:w-[200px] min-h-[100vh] bg-black dark:bg-violet-950 opacity-100 rounded-s-md transition-all duration-300 z-30 ${
           hamburgerOpen ? "right-0" : "right-[-500px]"
@@ -36,6 +38,9 @@ export const NavbarResponsive = () => {
           />
         </div>
 
+        <div className="max-xxsm:flex hidden absolute top-8 right-1">
+          <Theme />
+        </div>
         <ul className="flex flex-col w-full h-[70%] absolute top-24 items-end pr-5  space-y-10 font-[Poppins] text-slate-100 mr-5 text-xl max-sm:text-base font-semibold tracking-wider">
           <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
             <Link href="/">Inicio</Link>
