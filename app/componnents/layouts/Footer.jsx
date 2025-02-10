@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto flex flex-wrap justify-between">
