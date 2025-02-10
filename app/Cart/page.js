@@ -11,7 +11,7 @@ const CartSectionContainer = () => {
     updateQuantity,
     removeProduct,
     cleanCart,
-    totalProd,
+   totalProd,
     TotalPrecio,
   } = useContext(CartContext);
 

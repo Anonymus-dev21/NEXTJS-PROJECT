@@ -1,10 +1,16 @@
 "use client";
 import { FaOpencart } from "react-icons/fa";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/app/Context/CartContex";
 export const CartWidget = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const { totalProd } = useContext(CartContext);
+  useEffect(() => {
+    setIsMounted(true); // Marca que el componente está en el cliente
+  }, []);
+
+  if (!isMounted) return null;
   return (
     <div>
       <div className=" relative mr-2">

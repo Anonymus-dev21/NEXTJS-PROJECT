@@ -8,6 +8,8 @@ export const ProductCard = ({ imagen, titulo, desc, id, precioItem }) => {
           <img
             src={imagen}
             className=" w-full h-full rounded-se-2xl transition-all duration-400"
+            alt={titulo}
+            title={titulo}
           />
         </div>
       </Link>

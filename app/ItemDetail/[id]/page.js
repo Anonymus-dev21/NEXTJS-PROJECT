@@ -6,14 +6,15 @@ import Detail from "./Detail";
 
 export default async function ItemDetailPage({ params }) {
     if(!params) return <h2>Cargando...</h2>;
-   const { id } = params; 
+   const { id } = await params; 
 
   if(!id) return <h2>Producto no encontrado</h2>;
   try{
     const docRef = doc(db, "productos", id);
     const docSnap = await getDoc(docRef);
     if(!docSnap.exists()) return <h2>Producto no encontrado</h2>;
-    const product = docSnap.data();
+    const product = { ...docSnap.data(), id: docSnap.id };
+   
 
     return (
       <>
@@ -25,5 +26,6 @@ export default async function ItemDetailPage({ params }) {
   } catch (error) {
     console.log(error);
   }
+  
   
 }

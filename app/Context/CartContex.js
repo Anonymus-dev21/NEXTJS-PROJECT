@@ -5,9 +5,16 @@ import {collection, getDocs, doc, onSnapshot } from "firebase/firestore";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const carritoInicial = JSON.parse(localStorage.getItem("carrito")) || [];
-    const [cart, setCart] = useState(carritoInicial);
+  const [cart, setCart] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
    const [stockMax, setStockMax] = useState(false);
+
+   useEffect(() => {
+    setIsMounted(true); // Marca que el componente está en el cliente
+    // Cargar carrito desde localStorage SOLO en el cliente
+    const savedCart = JSON.parse(localStorage.getItem("carrito")) || [];
+    setCart(savedCart);
+  }, []);
    
    useEffect(() => {
       localStorage.setItem("carrito", JSON.stringify(cart));
@@ -46,7 +53,7 @@ export const CartProvider = ({ children }) => {
     return () => stopListening();
   }, []);
 
-    
+  
    const TotalPrecio = cart
    .reduce((acc, pdt) => acc + pdt.precio * pdt.cantidad, 0)
    .toFixed(2);
@@ -57,8 +64,9 @@ const removeProduct = (id) => {
  const cleanCart = () => {
    setCart([]);
  };
- const totalProd = cart.reduce((acc, pdt) => acc + pdt.cantidad, 0).toFixed(0);
-
+ 
+    const totalProd = cart.reduce((acc, pdt) => acc + pdt.cantidad, 0).toFixed(0)
+    
     return (
         <CartContext.Provider value={{ cart, setCart, stockMax, setStockMax, TotalPrecio, removeProduct, cleanCart, totalProd }}>
             {children}

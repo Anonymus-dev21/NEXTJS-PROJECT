@@ -22,7 +22,7 @@ import { useContext } from "react";
           if(item.id === product.id){
             if(item.stock <= item.cantidad + quantity){
               setStockMax(true)
-              return {...item, cantidad: item.stock}
+              return {...item, cantidad: item.stock, id}
 
             } else {
               setStockMax(false)
@@ -37,7 +37,7 @@ import { useContext } from "react";
         setCart([...cart, product])
       }
     };
-    console.log(cart)
+    
 
     return (
         <>
@@ -54,8 +54,10 @@ import { useContext } from "react";
           <div className=" IMAGEN CONTAINER w-[50%] min-h-full max-md:h-[300px] min-intermedio:min-h-fit max-md:w-full">
             <img
               src={productDetail.imagen}
-              alt="imagen"
+              alt={productDetail.nombre}
+              title='imagen de producto'
               className="w-full h-full object-cover"
+
             />
           </div>
 

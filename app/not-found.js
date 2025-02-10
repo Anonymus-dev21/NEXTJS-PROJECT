@@ -7,6 +7,7 @@ export default function NotFoundPage()  {
             <img
               src="https://res.cloudinary.com/dgaxmhaj2/image/upload/v1728186728/404NotFound_jmdpvz.jpg"
               alt="404 Not found"
+              title="404 Not found"
               className="w-full h-full object-cover object-center"
             />
           </div>
