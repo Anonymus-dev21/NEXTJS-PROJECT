@@ -1,10 +1,11 @@
 import { Geist, Geist_Mono} from "next/font/google";
 import { poppins, urbanist } from "./fonts/fonts";
 import "./globals.css";
-import { Navbar } from "./Componnents/Layouts/navbar/navbar";
-import Footer from "./Componnents/Layouts/Footer";
+
 import { CartProvider } from "./Context/CartContex";
 import { AuthProvider } from "./Context/AuthContext";
+import { Footer } from "./componnents/layouts/Footer";
+import { Navbar } from "./componnents/layouts/navbar/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
