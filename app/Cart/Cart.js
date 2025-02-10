@@ -81,9 +81,6 @@ export const CartSection = ({
                   </div>
                 </div>
                 <div>
-                  {/* <div className="py-[6px] px-2  my-4 w-fit rounded-md bg-brown-900 text-[16px] text-white font-semibold font-[Poppins] tracking-wide hover:tracking-wider hover:underline transition-all duration-300 cursor-pointer m-auto">
-                    <span onClick={cleanCart}>Limpiar Carrito</span>
-                  </div> */}
                 </div>
               </div>
             </div>

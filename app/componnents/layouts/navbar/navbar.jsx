@@ -38,7 +38,7 @@ export const Navbar = () => {
             <Link href="/">LectorComerce</Link>
           </span>
         </div>
-        <div className=" hidden sm:block ">
+        <div className=" hidden md:block ">
           <ul className="flex w-full text-white ">
             <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
               <Link href="/">Inicio</Link>
@@ -48,6 +48,9 @@ export const Navbar = () => {
             </li>
             <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
               <Link href="/contacto">Contacto</Link>
+            </li>
+            <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
+              <Link href="/Login">Login</Link>
             </li>
           </ul>
         </div>

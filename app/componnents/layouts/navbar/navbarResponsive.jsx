@@ -51,6 +51,9 @@ export const NavbarResponsive = () => {
           <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
             <Link href="/contacto">Contacto</Link>
           </li>
+          <li className="mx-2 group-hover:text-pink-500 transition-all duration-300">
+            <Link href="/Login">Login</Link>
+          </li>
         </ul>
       </div>
     </>
